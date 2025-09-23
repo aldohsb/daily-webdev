@@ -21,6 +21,29 @@ function generateButtons(containerId, folderPrefix) {
     }
 }
 
+// Function to generate and append buttons
+function generateButtons2(containerId, folderPrefix) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    for (let i = 1; i <= 500; i++) {
+        const button = document.createElement('a');
+        button.className = 'interactive-button';
+        button.textContent = i;
+        button.dataset.number = i;
+
+        // Determine the sub-folder based on the page number
+        let folderNumber = Math.floor((i - 1) / 20) * 20 + 1;
+        let folderEnd = folderNumber + 19;
+        let folderPath = `${String(folderNumber).padStart(3, '0')}-${String(folderEnd).padStart(3, '0')}`;
+        
+        // Construct the final link
+        button.href = `${folderPrefix}/${folderPath}/${String(i).padStart(3, '0')}/`;
+
+        container.appendChild(button);
+    }
+}
+
 // Function to generate filter buttons
 function generateFilters(containerId, buttonContainerId) {
     const container = document.getElementById(containerId);
@@ -70,7 +93,7 @@ generateButtons('learn-buttons', 'learn');
 generateFilters('learn-filters', 'learn-buttons');
 
 // Generate buttons for Project section
-generateButtons('project-buttons', 'projects');
+generateButtons2('project-buttons', 'projects');
 generateFilters('project-filters', 'project-buttons');
 
 // Initial filtering to show the first 50 buttons

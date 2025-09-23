@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: HTML Fundamentals - Learning Material</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            height: 8px;
+            border-radius: 4px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: white;
+            height: 100%;
+            width: 0.2%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 10px;
+            background: #f8f9ff;
+            border-left: 5px solid #4facfe;
+        }
+        
+        .section h2 {
+            color: #2c5aa0;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .section h3 {
+            color: #4facfe;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+        
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border: 1px solid #4a5568;
+        }
+        
+        .code-example .comment {
+            color: #68d391;
+        }
+        
+        .code-example .tag {
+            color: #f56565;
+        }
+        
+        .code-example .attribute {
+            color: #63b3ed;
+        }
+        
+        .code-example .value {
+            color: #fbb6ce;
+        }
+        
+        .demo-box {
+            border: 2px solid #4facfe;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            background: white;
+        }
+        
+        .demo-box h4 {
+            color: #2c5aa0;
+            margin-bottom: 10px;
+        }
+        
+        .tip-box {
+            background: #f0fff4;
+            border: 1px solid #68d391;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .tip-box::before {
+            content: "💡 ";
+            font-size: 1.2em;
+        }
+        
+        .warning-box {
+            background: #fffaf0;
+            border: 1px solid #f6ad55;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .warning-box::before {
+            content: "⚠️ ";
+            font-size: 1.2em;
+        }
+        
+        .learning-objectives {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .learning-objectives h3 {
+            margin-bottom: 15px;
+        }
+        
+        .learning-objectives ul {
+            list-style: none;
+        }
+        
+        .learning-objectives li::before {
+            content: "✅ ";
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Day 1: HTML Fundamentals</h1>
+            <p>Pengenalan HTML dan Struktur Dasar Dokumen</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.9em;">Progress: Day 1/500 (0.2%)</p>
+        </div>
+        
+        <div class="content">
+            <div class="learning-objectives">
+                <h3>🎯 Learning Objectives</h3>
+                <ul>
+                    <li>Memahami apa itu HTML dan kegunaannya</li>
+                    <li>Menguasai struktur dasar dokumen HTML5</li>
+                    <li>Memahami perbedaan antara elemen dan tag</li>
+                    <li>Mengetahui semantic HTML dan best practices</li>
+                    <li>Dapat membuat dokumen HTML valid</li>
+                </ul>
+            </div>
+
+            <!-- SECTION 1: APA ITU HTML -->
+            <div class="section">
+                <h2>1. 🌐 Apa itu HTML?</h2>
+                <p><strong>HTML (HyperText Markup Language)</strong> adalah bahasa markup yang digunakan untuk membuat struktur dan konten halaman web. HTML bukanlah bahasa pemrograman, melainkan bahasa markup yang menggunakan tag-tag untuk menandai berbagai elemen dalam dokumen.</p>
+                
+                <h3>Analogi Sederhana:</h3>
+                <p>Bayangkan HTML seperti <strong>kerangka rumah</strong>:</p>
+                <ul>
+                    <li>🏗️ <strong>Fondasi</strong> = struktur dasar HTML</li>
+                    <li>🚪 <strong>Pintu & Jendela</strong> = elemen interaktif (link, button)</li>
+                    <li>🖼️ <strong>Dekorasi</strong> = CSS (akan dipelajari nanti)</li>
+                    <li>⚡ <strong>Listrik & Air</strong> = JavaScript (akan dipelajari nanti)</li>
+                </ul>
+
+                <div class="demo-box">
+                    <h4>Contoh HTML Sederhana:</h4>
+                    <div class="code-example">
+&lt;h1&gt;Selamat Datang di Website Saya&lt;/h1&gt;
+&lt;p&gt;Ini adalah paragraf pertama saya.&lt;/p&gt;
+                    </div>
+                    <p><strong>Hasil di browser:</strong></p>
+                    <h1 style="margin: 10px 0;">Selamat Datang di Website Saya</h1>
+                    <p>Ini adalah paragraf pertama saya.</p>
+                </div>
+            </div>
+
+            <!-- SECTION 2: STRUKTUR DASAR HTML5 -->
+            <div class="section">
+                <h2>2. 🏗️ Struktur Dasar HTML5</h2>
+                <p>Setiap dokumen HTML5 harus memiliki struktur dasar yang konsisten:</p>
+                
+                <div class="code-example">
+<span class="comment">&lt;!-- Deklarasi dokumen HTML5 --&gt;</span>
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+
+<span class="comment">&lt;!-- Elemen root/utama --&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute">lang</span>=<span class="value">"id"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Bagian HEAD - tidak terlihat di browser --&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+    <span class="comment">&lt;!-- Encoding karakter --&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span><span class="tag">&gt;</span>
+    
+    <span class="comment">&lt;!-- Viewport untuk responsive design --&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+    
+    <span class="comment">&lt;!-- Judul halaman (muncul di tab browser) --&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Judul Halaman<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="comment">&lt;!-- Bagian BODY - konten yang terlihat --&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+    <span class="comment">&lt;!-- Konten website di sini --&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Hello World!<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+                </div>
+
+                <h3>📝 Penjelasan Setiap Bagian:</h3>
+
+                <h4>1. DOCTYPE Declaration</h4>
+                <div class="code-example">&lt;!DOCTYPE html&gt;</div>
+                <ul>
+                    <li>Memberitahu browser bahwa ini adalah dokumen HTML5</li>
+                    <li>Harus selalu ada di baris pertama</li>
+                    <li>Tidak case-sensitive, tapi konvensi menggunakan lowercase</li>
+                </ul>
+
+                <h4>2. HTML Element</h4>
+                <div class="code-example">&lt;html lang="id"&gt;</div>
+                <ul>
+                    <li><code>lang="id"</code> menandakan bahasa Indonesia</li>
+                    <li>Membantu screen reader dan SEO</li>
+                    <li>Contoh lain: <code>lang="en"</code> untuk bahasa Inggris</li>
+                </ul>
+
+                <h4>3. Head Element</h4>
+                <p>Berisi metadata yang tidak terlihat di halaman web:</p>
+                <ul>
+                    <li><strong>charset="UTF-8"</strong>: Encoding untuk karakter internasional</li>
+                    <li><strong>viewport</strong>: Pengaturan untuk responsive design</li>
+                    <li><strong>title</strong>: Judul yang muncul di tab browser</li>
+                </ul>
+
+                <h4>4. Body Element</h4>
+                <p>Berisi semua konten yang terlihat di browser</p>
+
+                <div class="tip-box">
+                    <strong>Tips:</strong> Selalu gunakan indentasi (spasi/tab) untuk membuat kode lebih mudah dibaca!
+                </div>
+            </div>
+
+            <!-- SECTION 3: TAG VS ELEMENT -->
+            <div class="section">
+                <h2>3. 🏷️ Memahami Tag vs Element</h2>
+                
+                <h3>Apa Perbedaannya?</h3>
+                <div class="demo-box">
+                    <div class="code-example">
+<span class="comment">&lt;!-- TAG PEMBUKA --&gt;</span>     <span class="comment">&lt;!-- TAG PENUTUP --&gt;</span>
+<span class="tag">&lt;h1&gt;</span>                     <span class="tag">&lt;/h1&gt;</span>
+     <span style="color: #f6ad55;">↑                        ↑</span>
+     <span style="color: #f6ad55;">└── ELEMENT LENGKAP ────┘</span>
+     
+<span class="tag">&lt;h1&gt;</span>Ini adalah Element<span class="tag">&lt;/h1&gt;</span>
+<span style="color: #68d391;">    ↑              ↑</span>
+<span style="color: #68d391;">    └── CONTENT ──┘</span>
+                    </div>
+                </div>
+
+                <ul>
+                    <li><strong>TAG</strong>: Pembuka <code>&lt;h1&gt;</code> dan penutup <code>&lt;/h1&gt;</code></li>
+                    <li><strong>ELEMENT</strong>: Tag + content = <code>&lt;h1&gt;Ini adalah Element&lt;/h1&gt;</code></li>
+                    <li><strong>CONTENT</strong>: Isi di antara tag pembuka dan penutup</li>
+                </ul>
+
+                <h3>Jenis-Jenis Tag:</h3>
+
+                <h4>1. Container Tags (Berpasangan)</h4>
+                <div class="code-example">
+<span class="tag">&lt;h1&gt;</span>Heading 1<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;p&gt;</span>Paragraf<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;div&gt;</span>Division<span class="tag">&lt;/div&gt;</span>
+                </div>
+
+                <h4>2. Self-Closing Tags (Tidak berpasangan)</h4>
+                <div class="code-example">
+<span class="tag">&lt;br&gt;</span>        <span class="comment">&lt;!-- Line break --&gt;</span>
+<span class="tag">&lt;hr&gt;</span>        <span class="comment">&lt;!-- Horizontal rule --&gt;</span>
+<span class="tag">&lt;img&gt;</span>       <span class="comment">&lt;!-- Image --&gt;</span>
+<span class="tag">&lt;input&gt;</span>     <span class="comment">&lt;!-- Form input --&gt;</span>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Perhatian:</strong> Dalam HTML5, self-closing tags tidak perlu slash penutup. Jadi <code>&lt;br/&gt;</code> dan <code>&lt;br&gt;</code> sama saja, tapi <code>&lt;br&gt;</code> lebih direkomendasikan.
+                </div>
+            </div>
+
+            <!-- SECTION 4: SEMANTIC HTML -->
+            <div class="section">
+                <h2>4. 🏗️ Semantic HTML Elements</h2>
+                <p><strong>Semantic HTML</strong> adalah penggunaan elemen HTML yang memberikan makna pada struktur dan konten, bukan hanya tampilan.</p>
+
+                <h3>Mengapa Semantic HTML Penting?</h3>
+                <ul>
+                    <li>🔍 <strong>SEO</strong>: Search engine lebih mudah memahami konten</li>
+                    <li>♿ <strong>Accessibility</strong>: Screen reader dapat navigasi dengan baik</li>
+                    <li>🧑‍💻 <strong>Maintainability</strong>: Kode lebih mudah dibaca dan dipelihara</li>
+                    <li>📱 <strong>Future-proof</strong>: Kompatibel dengan teknologi masa depan</li>
+                </ul>
+
+                <h3>Semantic Elements HTML5:</h3>
+                
+                <div class="demo-box">
+                    <h4>Struktur Semantic Layout:</h4>
+                    <div class="code-example">
+<span class="tag">&lt;header&gt;</span>
+    <span class="comment">&lt;!-- Header website/halaman --&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Nama Website<span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;nav&gt;</span>
+        <span class="comment">&lt;!-- Navigasi utama --&gt;</span>
+        <span class="tag">&lt;ul&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"#"</span><span class="tag">&gt;</span>Home<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"#"</span><span class="tag">&gt;</span>About<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+        <span class="tag">&lt;/ul&gt;</span>
+    <span class="tag">&lt;/nav&gt;</span>
+<span class="tag">&lt;/header&gt;</span>
+
+<span class="tag">&lt;main&gt;</span>
+    <span class="comment">&lt;!-- Konten utama halaman --&gt;</span>
+    <span class="tag">&lt;article&gt;</span>
+        <span class="comment">&lt;!-- Artikel independen --&gt;</span>
+        <span class="tag">&lt;h2&gt;</span>Judul Artikel<span class="tag">&lt;/h2&gt;</span>
+        <span class="tag">&lt;section&gt;</span>
+            <span class="comment">&lt;!-- Bagian dalam artikel --&gt;</span>
+            <span class="tag">&lt;h3&gt;</span>Sub Judul<span class="tag">&lt;/h3&gt;</span>
+            <span class="tag">&lt;p&gt;</span>Konten artikel...<span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;/section&gt;</span>
+    <span class="tag">&lt;/article&gt;</span>
+    
+    <span class="tag">&lt;aside&gt;</span>
+        <span class="comment">&lt;!-- Sidebar/konten sampingan --&gt;</span>
+        <span class="tag">&lt;h3&gt;</span>Artikel Terkait<span class="tag">&lt;/h3&gt;</span>
+    <span class="tag">&lt;/aside&gt;</span>
+<span class="tag">&lt;/main&gt;</span>
+
+<span class="tag">&lt;footer&gt;</span>
+    <span class="comment">&lt;!-- Footer website --&gt;</span>
+    <span class="tag">&lt;p&gt;</span>&copy; 2025 Nama Website<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/footer&gt;</span>
+                    </div>
+                </div>
+
+                <h3>📋 Daftar Semantic Elements:</h3>
+                <ul>
+                    <li><strong>&lt;header&gt;</strong>: Header halaman/section</li>
+                    <li><strong>&lt;nav&gt;</strong>: Navigasi menu</li>
+                    <li><strong>&lt;main&gt;</strong>: Konten utama (hanya 1 per halaman)</li>
+                    <li><strong>&lt;article&gt;</strong>: Konten independen (blog post, news article)</li>
+                    <li><strong>&lt;section&gt;</strong>: Bagian terkait dalam konten</li>
+                    <li><strong>&lt;aside&gt;</strong>: Konten sampingan (sidebar, related links)</li>
+                    <li><strong>&lt;footer&gt;</strong>: Footer halaman/section</li>
+                    <li><strong>&lt;figure&gt;</strong>: Gambar dengan caption</li>
+                    <li><strong>&lt;figcaption&gt;</strong>: Caption untuk figure</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>Tips:</strong> Gunakan semantic elements daripada <code>&lt;div&gt;</code> generik ketika memungkinkan!
+                </div>
+            </div>
+
+            <!-- SECTION 5: BEST PRACTICES -->
+            <div class="section">
+                <h2>5. ✅ HTML Best Practices</h2>
+                
+                <h3>1. Proper Nesting (Nested dengan Benar)</h3>
+                <div class="demo-box">
+                    <h4>❌ Salah:</h4>
+                    <div class="code-example" style="background: #4a1817; color: #feb2b2;">
+&lt;p&gt;&lt;strong&gt;Bold text&lt;/p&gt;&lt;/strong&gt;  <span class="comment">&lt;!-- Tag tidak sejajar --&gt;</span>
+                    </div>
+                    
+                    <h4>✅ Benar:</h4>
+                    <div class="code-example">
+&lt;p&gt;&lt;strong&gt;Bold text&lt;/strong&gt;&lt;/p&gt;  <span class="comment">&lt;!-- Tag sejajar --&gt;</span>
+                    </div>
+                </div>
+
+                <h3>2. Consistent Indentation</h3>
+                <div class="demo-box">
+                    <h4>✅ Gunakan 2 atau 4 spasi konsisten:</h4>
+                    <div class="code-example">
+&lt;div&gt;
+    &lt;h1&gt;Judul&lt;/h1&gt;
+    &lt;p&gt;
+        Ini adalah paragraf dengan 
+        &lt;strong&gt;text bold&lt;/strong&gt; di dalamnya.
+    &lt;/p&gt;
+&lt;/div&gt;
+                    </div>
+                </div>
+
+                <h3>3. Use Lowercase Tags</h3>
+                <div class="demo-box">
+                    <h4>❌ Hindari:</h4>
+                    <div class="code-example" style="background: #4a1817; color: #feb2b2;">
+&lt;DIV&gt;&lt;H1&gt;TITLE&lt;/H1&gt;&lt;/DIV&gt;
+                    </div>
+                    
+                    <h4>✅ Gunakan:</h4>
+                    <div class="code-example">
+&lt;div&gt;&lt;h1&gt;Title&lt;/h1&gt;&lt;/div&gt;
+                    </div>
+                </div>
+
+                <h3>4. Always Quote Attributes</h3>
+                <div class="demo-box">
+                    <h4>❌ Tidak konsisten:</h4>
+                    <div class="code-example" style="background: #4a1817; color: #feb2b2;">
+&lt;div class=container id=main&gt;
+                    </div>
+                    
+                    <h4>✅ Selalu gunakan quotes:</h4>
+                    <div class="code-example">
+&lt;div class="container" id="main"&gt;
+                    </div>
+                </div>
+
+                <h3>5. Provide Alt Text for Images</h3>
+                <div class="code-example">
+<span class="comment">&lt;!-- Selalu sediakan alt text untuk accessibility --&gt;</span>
+&lt;img src="logo.jpg" alt="Logo perusahaan ABC"&gt;
+                </div>
+
+                <div class="warning-box">
+                    <strong>Ingat:</strong> HTML yang valid dan semantic akan membuat website Anda lebih profesional dan mudah diakses oleh semua pengguna!
+                </div>
+            </div>
+
+            <!-- SECTION 6: TOOLS DAN VALIDATION -->
+            <div class="section">
+                <h2>6. 🛠️ Tools dan Validation</h2>
+                
+                <h3>HTML Validator</h3>
+                <p>Selalu validasi HTML Anda di: <strong>validator.w3.org</strong></p>
+                
+                <h3>Developer Tools</h3>
+                <ul>
+                    <li><strong>Chrome DevTools</strong>: F12 atau Ctrl+Shift+I</li>
+                    <li><strong>Firefox Developer Tools</strong>: F12</li>
+                    <li><strong>Safari Web Inspector</strong>: Cmd+Option+I</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>Latihan:</strong> Buka website apapun, tekan F12, dan lihat struktur HTML-nya di tab Elements/Inspector!
+                </div>
+            </div>
+
+            <div class="section" style="text-align: center; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;">
+                <h2>🎯 Siap untuk Final Project?</h2>
+                <p>Sekarang saatnya menerapkan semua yang sudah dipelajari dalam project nyata!</p>
+                <p><strong>Final Project:</strong> Personal Learning Portfolio Page</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

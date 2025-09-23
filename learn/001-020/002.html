@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2: HTML Tags - Headings, Paragraphs & Formatting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            height: 8px;
+            border-radius: 4px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: white;
+            height: 100%;
+            width: 0.4%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 10px;
+            background: #fff5f5;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .section h2 {
+            color: #c92a2a;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .section h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+        
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border: 1px solid #4a5568;
+        }
+        
+        .code-example .comment {
+            color: #68d391;
+        }
+        
+        .code-example .tag {
+            color: #f56565;
+        }
+        
+        .code-example .attribute {
+            color: #63b3ed;
+        }
+        
+        .code-example .value {
+            color: #fbb6ce;
+        }
+        
+        .demo-box {
+            border: 2px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            background: white;
+        }
+        
+        .demo-box h4 {
+            color: #c92a2a;
+            margin-bottom: 10px;
+        }
+        
+        .tip-box {
+            background: #f0fff4;
+            border: 1px solid #68d391;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .tip-box::before {
+            content: "💡 ";
+            font-size: 1.2em;
+        }
+        
+        .warning-box {
+            background: #fffaf0;
+            border: 1px solid #f6ad55;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .warning-box::before {
+            content: "⚠️ ";
+            font-size: 1.2em;
+        }
+        
+        .industry-box {
+            background: #e6fffa;
+            border: 1px solid #38b2ac;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .industry-box::before {
+            content: "🏢 ";
+            font-size: 1.2em;
+        }
+        
+        .learning-objectives {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .learning-objectives h3 {
+            margin-bottom: 15px;
+        }
+        
+        .learning-objectives ul {
+            list-style: none;
+        }
+        
+        .learning-objectives li::before {
+            content: "✅ ";
+            margin-right: 10px;
+        }
+
+        /* Visual Examples for Headings */
+        .heading-demo h1 {
+            font-size: 2.5em;
+            color: #c92a2a;
+            margin: 10px 0;
+        }
+        
+        .heading-demo h2 {
+            font-size: 2em;
+            color: #d63384;
+            margin: 10px 0;
+        }
+        
+        .heading-demo h3 {
+            font-size: 1.7em;
+            color: #e85d75;
+            margin: 10px 0;
+        }
+        
+        .heading-demo h4 {
+            font-size: 1.4em;
+            color: #f1828d;
+            margin: 10px 0;
+        }
+        
+        .heading-demo h5 {
+            font-size: 1.2em;
+            color: #f8a5aa;
+            margin: 10px 0;
+        }
+        
+        .heading-demo h6 {
+            font-size: 1em;
+            color: #fab1b3;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Day 2: HTML Tags Deep Dive</h1>
+            <p>Headings, Paragraphs & Text Formatting Mastery</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.9em;">Progress: Day 2/500 (0.4%)</p>
+        </div>
+        
+        <div class="content">
+            <div class="learning-objectives">
+                <h3>🎯 Learning Objectives Day 2</h3>
+                <ul>
+                    <li>Menguasai hierarchy sistem heading H1-H6</li>
+                    <li>Memahami struktur paragraf yang proper</li>
+                    <li>Menguasai text formatting dan emphasis tags</li>
+                    <li>Belajar typography best practices untuk web</li>
+                    <li>Memahami semantic meaning vs visual styling</li>
+                    <li>Membuat content structure yang SEO-friendly</li>
+                </ul>
+            </div>
+
+            <!-- SECTION 1: HEADING HIERARCHY -->
+            <div class="section">
+                <h2>1. 🏗️ Heading Hierarchy (H1-H6)</h2>
+                <p>Headings adalah <strong>backbone</strong> dari struktur content. Mereka tidak hanya memberikan visual hierarchy, tapi juga <em>semantic meaning</em> untuk SEO dan accessibility.</p>
+                
+                <h3>📊 Visual Heading Hierarchy</h3>
+                <div class="demo-box heading-demo">
+                    <h1>H1 - Main Page Title (Hanya 1 per halaman)</h1>
+                    <h2>H2 - Major Section Heading</h2>
+                    <h3>H3 - Subsection Heading</h3>
+                    <h4>H4 - Minor Subsection</h4>
+                    <h5>H5 - Sub-minor Section</h5>
+                    <h6>H6 - Smallest Heading</h6>
+                </div>
+
+                <h3>🔍 Semantic Structure Rules</h3>
+                <div class="code-example">
+<span class="comment">&lt;!-- ✅ CORRECT: Logical hierarchy --&gt;</span>
+&lt;h1&gt;Complete Guide to Web Development&lt;/h1&gt;
+  &lt;h2&gt;Frontend Development&lt;/h2&gt;
+    &lt;h3&gt;HTML Fundamentals&lt;/h3&gt;
+      &lt;h4&gt;Semantic Elements&lt;/h4&gt;
+        &lt;h5&gt;Header Element&lt;/h5&gt;
+        &lt;h5&gt;Nav Element&lt;/h5&gt;
+    &lt;h3&gt;CSS Styling&lt;/h3&gt;
+      &lt;h4&gt;Flexbox&lt;/h4&gt;
+      &lt;h4&gt;Grid&lt;/h4&gt;
+  &lt;h2&gt;Backend Development&lt;/h2&gt;
+    &lt;h3&gt;Node.js&lt;/h3&gt;
+    &lt;h3&gt;Express.js&lt;/h3&gt;
+
+<span class="comment">&lt;!-- ❌ WRONG: Skipped levels --&gt;</span>
+&lt;h1&gt;Main Title&lt;/h1&gt;
+&lt;h4&gt;Skipped H2 and H3&lt;/h4&gt;  <span class="comment">&lt;!-- Bad for SEO! --&gt;</span>
+</div>
+
+                <div class="warning-box">
+                    <strong>Cardinal Rule:</strong> Jangan skip heading levels! H1 → H2 → H3, tidak boleh H1 → H4 langsung.
+                </div>
+
+                <h3>🎯 H1 Best Practices</h3>
+                <div class="demo-box">
+                    <h4>✅ Good H1 Examples:</h4>
+                    <div class="code-example">
+<span class="comment">&lt;!-- Descriptive dan specific --&gt;</span>
+&lt;h1&gt;Complete React.js Tutorial for Beginners 2025&lt;/h1&gt;
+
+<span class="comment">&lt;!-- Brand + page purpose --&gt;</span>
+&lt;h1&gt;TechBlog - Latest JavaScript Frameworks&lt;/h1&gt;
+
+<span class="comment">&lt;!-- Action-oriented --&gt;</span>
+&lt;h1&gt;Learn Fullstack Development in 500 Days&lt;/h1&gt;
+</div>
+                    
+                    <h4>❌ Poor H1 Examples:</h4>
+                    <div class="code-example" style="background: #4a1817; color: #feb2b2;">
+&lt;h1&gt;Welcome&lt;/h1&gt;           <span class="comment">&lt;!-- Too generic --&gt;</span>
+&lt;h1&gt;Home&lt;/h1&gt;              <span class="comment">&lt;!-- No context --&gt;</span>
+&lt;h1&gt;Click Here&lt;/h1&gt;        <span class="comment">&lt;!-- Not descriptive --&gt;</span>
+</div>
+                </div>
+
+                <h3>📱 Responsive Heading Considerations</h3>
+                <div class="industry-box">
+                    <strong>Industry Insight:</strong> Di mobile, heading besar bisa overwhelming. Gunakan CSS untuk adjust ukuran font di breakpoint berbeda, tapi tetap pertahankan semantic hierarchy di HTML.
+                </div>
+
+                <div class="code-example">
+<span class="comment">/* CSS untuk responsive headings */</span>
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+
+<span class="comment">/* Mobile adjustments */</span>
+@media (max-width: 768px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+}
+</div>
+            </div>
+
+            <!-- SECTION 2: PARAGRAPH MASTERY -->
+            <div class="section">
+                <h2>2. 📄 Paragraph Structure & Best Practices</h2>
+                <p>Paragraf adalah building block utama untuk text content. Proper paragraph structure mempengaruhi <strong>readability</strong>, <em>SEO</em>, dan <strong>user experience</strong>.</p>
+
+                <h3>📝 Basic Paragraph Syntax</h3>
+                <div class="code-example">
+<span class="comment">&lt;!-- Basic paragraph --&gt;</span>
+&lt;p&gt;Ini adalah paragraf standar dengan kalimat yang readable dan well-structured.&lt;/p&gt;
+
+<span class="comment">&lt;!-- Multiple paragraphs --&gt;</span>
+&lt;p&gt;Paragraf pertama membahas topik A dengan detail yang cukup untuk memberikan context kepada pembaca.&lt;/p&gt;
+
+&lt;p&gt;Paragraf kedua melanjutkan dengan topik B, memberikan transisi yang smooth dari paragraf sebelumnya.&lt;/p&gt;
+
+<span class="comment">&lt;!-- Paragraph dengan line breaks --&gt;</span>
+&lt;p&gt;
+    Alamat Perusahaan:&lt;br&gt;
+    Jl. Sudirman No. 123&lt;br&gt;
+    Jakarta Selatan 12345&lt;br&gt;
+    Indonesia
+&lt;/p&gt;
+</div>
+
+                <h3>📏 Optimal Paragraph Length</h3>
+                <div class="demo-box">
+                    <h4>📊 Industry Standards:</h4>
+                    <ul>
+                        <li><strong>Web Reading:</strong> 50-75 kata per paragraf (2-4 kalimat)</li>
+                        <li><strong>Mobile Reading:</strong> 40-50 kata per paragraf</li>
+                        <li><strong>Technical Content:</strong> 75-100 kata per paragraf</li>
+                        <li><strong>Blog Posts:</strong> 50-60 kata per paragraf</li>
+                    </ul>
+
+                    <h4>✅ Good Paragraph Example:</h4>
+                    <div class="code-example">
+&lt;p&gt;
+    HTML semantic elements memberikan meaning pada struktur website. 
+    Dengan menggunakan elemen seperti &lt;code&gt;&amp;lt;article&amp;gt;&lt;/code&gt; dan 
+    &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt;, search engine dapat lebih mudah 
+    memahami content hierarchy dan context.
+&lt;/p&gt;
+</div>
+
+                    <h4>❌ Poor Paragraph Example:</h4>
+                    <div class="code-example" style="background: #4a1817; color: #feb2b2;">
+&lt;p&gt;
+    HTML adalah HyperText Markup Language yang digunakan untuk membuat 
+    website dan aplikasi web modern dan HTML juga merupakan fondasi dari 
+    semua website yang ada di internet dan tanpa HTML tidak mungkin ada 
+    website yang bisa diakses oleh browser dan HTML juga sangat penting 
+    dipelajari oleh semua web developer baik frontend maupun fullstack 
+    developer karena HTML adalah skill fundamental yang wajib dikuasai.
+&lt;/p&gt;
+<span class="comment">&lt;!-- Terlalu panjang, sulit dibaca --&gt;</span>
+</div>
+                </div>
+
+                <h3>🔗 Paragraph Relationships</h3>
+                <div class="code-example">
+<span class="comment">&lt;!-- Opening paragraph --&gt;</span>
+&lt;p&gt;
+    &lt;strong&gt;JavaScript&lt;/strong&gt; adalah bahasa pemrograman yang powerful 
+    untuk web development. Dalam artikel ini, kita akan explore 
+    fundamental concepts yang perlu dikuasai.
+&lt;/p&gt;
+
+<span class="comment">&lt;!-- Supporting paragraphs --&gt;</span>
+&lt;p&gt;
+    Pertama, mari kita pahami konsep &lt;em&gt;variables&lt;/em&gt; dan 
+    &lt;em&gt;data types&lt;/em&gt;. Variables adalah container untuk 
+    menyimpan data values.
+&lt;/p&gt;
+
+&lt;p&gt;
+    Selanjutnya, kita akan belajar tentang &lt;em&gt;functions&lt;/em&gt;. 
+    Functions memungkinkan kita untuk organize code menjadi 
+    reusable blocks.
+&lt;/p&gt;
+
+<span class="comment">&lt;!-- Closing paragraph --&gt;</span>
+&lt;p&gt;
+    Dengan memahami konsep-konsep fundamental ini, Anda akan 
+    memiliki &lt;strong&gt;foundation yang solid&lt;/strong&gt; untuk 
+    advanced JavaScript topics.
+&lt;/p&gt;
+</div>
+
+                <div class="tip-box">
+                    <strong>Writing Tip:</strong> Setiap paragraf harus memiliki 1 main idea. Jika ada 2 ide berbeda, buat 2 paragraf terpisah.
+                </div>
+            </div>
+
+            <!-- SECTION 3: TEXT FORMATTING ELEMENTS -->
+            <div class="section">
+                <h2>3. ✨ Text Formatting & Emphasis Elements</h2>
+                <p>HTML menyediakan banyak elements untuk text formatting. Penting untuk memahami <strong>semantic meaning</strong> vs <em>visual appearance</em>.</p>
+
+                <h3>🔤 Emphasis & Importance</h3>
+                <div class="demo-box">
+                    <h4>Semantic Elements (Recommended):</h4>
+                    <div class="code-example">
+<span class="comment">&lt;!-- STRONG: Important content --&gt;</span>
+&lt;p&gt;Deadline project adalah &lt;strong&gt;besok pagi&lt;/strong&gt;!&lt;/p&gt;
+<span style="color: #68d391;">Result: Deadline project adalah <strong>besok pagi</strong>!</span>
+
+<span class="comment">&lt;!-- EM: Emphasized content --&gt;</span>
+&lt;p&gt;Kamu &lt;em&gt;harus&lt;/em&gt; backup data sebelum update.&lt;/p&gt;
+<span style="color: #68d391;">Result: Kamu <em>harus</em> backup data sebelum update.</span>
+
+<span class="comment">&lt;!-- MARK: Highlighted/relevant text --&gt;</span>
+&lt;p&gt;Search result: &lt;mark&gt;HTML tutorial&lt;/mark&gt; untuk pemula.&lt;/p&gt;
+<span style="color: #68d391;">Result: Search result: <mark>HTML tutorial</mark> untuk pemula.</span>
+</div>
+
+                    <h4>Visual-Only Elements:</h4>
+                    <div class="code-example">
+<span class="comment">&lt;!-- B: Bold text (no semantic meaning) --&gt;</span>
+&lt;p&gt;Film &lt;b&gt;Inception&lt;/b&gt; sangat menarik.&lt;/p&gt;
+<span style="color: #68d391;">Result: Film <b>Inception</b> sangat menarik.</span>
+
+<span class="comment">&lt;!-- I: Italic text (no semantic meaning) --&gt;</span>
+&lt;p&gt;Kata &lt;i&gt;déjà vu&lt;/i&gt; berasal dari bahasa Prancis.&lt;/p&gt;
+<span style="color: #68d391;">Result: Kata <i>déjà vu</i> berasal dari bahasa Prancis.</span>
+</div>
+                </div>
+
+                <h3>✏️ Editorial & Modification Elements</h3>
+                <div class="demo-box">
+                    <div class="code-example">
+<span class="comment">&lt;!-- INS: Inserted text --&gt;</span>
+&lt;p&gt;Harga laptop: &lt;ins&gt;Rp 8,500,000&lt;/ins&gt;&lt;/p&gt;
+<span style="color: #68d391;">Result: Harga laptop: <ins>Rp 8,500,000</ins></span>
+
+<span class="comment">&lt;!-- DEL: Deleted text --&gt;</span>
+&lt;p&gt;Harga lama: &lt;del&gt;Rp 10,000,000&lt;/del&gt;&lt;/p&gt;
+<span style="color: #68d391;">Result: Harga lama: <del>Rp 10,000,000</del></span>
+
+<span class="comment">&lt;!-- Combined usage --&gt;</span>
+&lt;p&gt;
+    Harga: &lt;del&gt;Rp 10,000,000&lt;/del&gt; &lt;ins&gt;Rp 8,500,000&lt;/ins&gt;
+    &lt;strong&gt;(Discount 15%!)&lt;/strong&gt;
+&lt;/p&gt;
+<span style="color: #68d391;">Result: Harga: <del>Rp 10,000,000</del> <ins>Rp 8,500,000</ins> <strong>(Discount 15%!)</strong></span>
+</div>
+                </div>
+
+                <h3>🔬 Technical & Scientific Elements</h3>
+                <div class="demo-box">
+                    <div class="code-example">
+<span class="comment">&lt;!-- SUP: Superscript --&gt;</span>
+&lt;p&gt;Formula: E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+<span style="color: #68d391;">Result: Formula: E = mc<sup>2</sup></span>
+
+<span class="comment">&lt;!-- SUB: Subscript --&gt;</span>
+&lt;p&gt;Water formula: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+<span style="color: #68d391;">Result: Water formula: H<sub>2</sub>O</span>
+
+<span class="comment">&lt;!-- CODE: Inline code --&gt;</span>
+&lt;p&gt;Gunakan function &lt;code&gt;console.log()&lt;/code&gt; untuk debugging.&lt;/p&gt;
+<span style="color: #68d391;">Result: Gunakan function <code>console.log()</code> untuk debugging.</span>
+
+<span class="comment">&lt;!-- KBD: Keyboard input --&gt;</span>
+&lt;p&gt;Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt; to copy.&lt;/p&gt;
+<span style="color: #68d391;">Result: Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.</span>
+
+<span class="comment">&lt;!-- SAMP: Sample output --&gt;</span>
+&lt;p&gt;Output: &lt;samp&gt;Hello, World!&lt;/samp&gt;&lt;/p&gt;
+<span style="color: #68d391;">Result: Output: <samp>Hello, World!</samp></span>
+</div>
+                </div>
+
+                <h3>📖 Quotations & Citations</h3>
+                <div class="demo-box">
+                    <div class="code-example">
+<span class="comment">&lt;!-- Q: Short inline quotation --&gt;</span>
+&lt;p&gt;Steve Jobs berkata, &lt;q&gt;Innovation distinguishes between a leader and a follower.&lt;/q&gt;&lt;/p&gt;
+
+<span class="comment">&lt;!-- BLOCKQUOTE: Long quotation --&gt;</span>
+&lt;blockquote cite="https://example.com/quote"&gt;
+    &lt;p&gt;
+        The best way to predict the future is to invent it. 
+        Computer science is not about computers, it's about thinking.
+    &lt;/p&gt;
+    &lt;cite&gt;— Alan Kay&lt;/cite&gt;
+&lt;/blockquote&gt;
+
+<span class="comment">&lt;!-- CITE: Work title --&gt;</span>
+&lt;p&gt;
+    Buku &lt;cite&gt;Clean Code&lt;/cite&gt; by Robert Martin adalah must-read 
+    untuk setiap developer.
+&lt;/p&gt;
+</div>
+
+                    <p><strong>Visual Result:</strong></p>
+                    <p>Steve Jobs berkata, <q>Innovation distinguishes between a leader and a follower.</q></p>
+                    
+                    <blockquote cite="https://example.com/quote" style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-left: 4px solid #ff6b6b;">
+                        <p>The best way to predict the future is to invent it. Computer science is not about computers, it's about thinking.</p>
+                        <cite>— Alan Kay</cite>
+                    </blockquote>
+                    
+                    <p>Buku <cite>Clean Code</cite> by Robert Martin adalah must-read untuk setiap developer.</p>
+                </div>
+            </div>
+
+            <!-- SECTION 4: TIPS PRAKTIS INDUSTRI -->
+            <div class="section">
+                <h2>4. 💼 Tips Praktis Industri</h2>
+                
+                <h3>🎯 Content Strategy for Headings</h3>
+                <div class="industry-box">
+                    <strong>SEO Insider:</strong> Google menggunakan heading hierarchy untuk understand content structure. H1 paling berpengaruh pada ranking, diikuti H2, H3, dst.
+                </div>
+
+                <div class="demo-box">
+                    <h4>✅ SEO-Optimized Heading Strategy:</h4>
+                    <div class="code-example">
+<span class="comment">&lt;!-- H1: Primary keyword + clear intent --&gt;</span>
+&lt;h1&gt;React Tutorial 2025: Complete Guide for Beginners&lt;/h1&gt;
+
+<span class="comment">&lt;!-- H2: Secondary keywords, logical sections --&gt;</span>
+&lt;h2&gt;What is React.js and Why Use It?&lt;/h2&gt;
+&lt;h2&gt;Setting Up React Development Environment&lt;/h2&gt;
+&lt;h2&gt;Creating Your First React Component&lt;/h2&gt;
+
+<span class="comment">&lt;!-- H3: Long-tail keywords, specific topics --&gt;</span>
+&lt;h3&gt;Installing Node.js and npm&lt;/h3&gt;
+&lt;h3&gt;Creating React App with Vite&lt;/h3&gt;
+&lt;h3&gt;Understanding JSX Syntax&lt;/h3&gt;
+</div>
+                </div>
+
+                <h3>📱 Mobile-First Typography</h3>
+                <div class="industry-box">
+                    <strong>Industry Practice:</strong> 70%+ traffic dari mobile. Design typography untuk mobile first, kemudian enhance untuk desktop.
+                </div>
+
+                <div class="code-example">
+<span class="comment">/* Mobile-first responsive typography */</span>
+<span class="comment">/* Base styles untuk mobile */</span>
+h1 { 
+    font-size: 1.75rem; 
+    line-height: 1.2; 
+    margin-bottom: 1rem; 
+}
+
+p { 
+    font-size: 1rem; 
+    line-height: 1.6; 
+    margin-bottom: 1.5rem; 
+}
+
+<span class="comment">/* Tablet breakpoint */</span>
+@media (min-width: 768px) {
+    h1 { font-size: 2.25rem; }
+    p { font-size: 1.125rem; }
+}
+
+<span class="comment">/* Desktop breakpoint */</span>
+@media (min-width: 1024px) {
+    h1 { font-size: 2.5rem; }
+    p { font-size: 1.125rem; }
+}
+</div>
+
+                <h3>♿ Accessibility Best Practices</h3>
+                <div class="demo-box">
+                    <h4>Screen Reader Optimization:</h4>
+                    <div class="code-example">
+<span class="comment">&lt;!-- Descriptive headings untuk navigation --&gt;</span>
+&lt;h2&gt;User Registration Steps&lt;/h2&gt;  <span class="comment">&lt;!-- Clear context --&gt;</span>
+  &lt;h3&gt;Step 1: Enter Personal Information&lt;/h3&gt;
+  &lt;h3&gt;Step 2: Choose Username and Password&lt;/h3&gt;
+  &lt;h3&gt;Step 3: Verify Email Address&lt;/h3&gt;
+
+<span class="comment">&lt;!-- Skip navigation untuk screen readers --&gt;</span>
+&lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+&lt;main id="main-content"&gt;...&lt;/main&gt;
+</div>
+                </div>
+
+                <h3>🔧 Performance Optimization</h3>
+                <div class="industry-box">
+                    <strong>Performance Tip:</strong> Excessive text formatting elements dapat slow down rendering. Use CSS classes untuk repeated styling instead of inline formatting tags.
+                </div>
+
+                <div class="demo-box">
+                    <h4>❌ Performance-Heavy:</h4>
+                    <div class="code-example" style="background: #4a1817; color: #feb2b2;">
+<span class="comment">&lt;!-- Terlalu banyak nested formatting --&gt;</span>
+&lt;p&gt;
+    &lt;strong&gt;&lt;em&gt;&lt;u&gt;&lt;mark&gt;Important highlighted emphasized underlined text&lt;/mark&gt;&lt;/u&gt;&lt;/em&gt;&lt;/strong&gt;
+&lt;/p&gt;
+</div>
+                    
+                    <h4>✅ Performance-Optimized:</h4>
+                    <div class="code-example">
+<span class="comment">&lt;!-- CSS class untuk complex styling --&gt;</span>
+&lt;p&gt;
+    &lt;span class="highlight-important"&gt;Important highlighted text&lt;/span&gt;
+&lt;/p&gt;
+
+<span class="comment">/* CSS */</span>
+.highlight-important {
+    font-weight: bold;
+    font-style: italic;
+    background-color: yellow;
+    text-decoration: underline;
+}
+</div>
+                </div>
+            </div>
+
+            <!-- SECTION 5: COMMON BEGINNER CONFUSION -->
+            <div class="section">
+                <h2>5. 🤔 Hal-hal yang Sering Membingungkan Pemula</h2>
+                
+                <h3>❓ Confusion #1: Kapan Pakai &lt;br&gt; vs &lt;p&gt;?</h3>
+                <div class="demo-box">
+                    <h4>🧠 Pemikiran Pemula:</h4>
+                    <p><em>"Untuk bikin baris baru, pakai &lt;br&gt; aja kan? Lebih simple!"</em></p>
+                    
+                    <h4>💡 Penjelasan:</h4>
+                    <div class="code-example">
+<span class="comment">&lt;!-- ❌ SALAH: Pakai BR untuk paragraf --&gt;</span>
+Ini paragraf pertama.&lt;br&gt;&lt;br&gt;
+Ini paragraf kedua.&lt;br&gt;&lt;br&gt;
+Ini paragraf ketiga.
+
+<span class="comment">&lt;!-- ✅ BENAR: Pakai P untuk paragraf --&gt;</span>
+&lt;p&gt;Ini paragraf pertama dengan content yang lengkap.&lt;/p&gt;
+&lt;p&gt;Ini paragraf kedua dengan topik berbeda.&lt;/p&gt;
+&lt;p&gt;Ini paragraf ketiga melanjutkan discussion.&lt;/p&gt;
+
+<span class="comment">&lt;!-- ✅ BR untuk line breaks dalam 1 paragraf --&gt;</span>
+&lt;p&gt;
+    Alamat Kantor:&lt;br&gt;
+    Jl. Sudirman No. 123&lt;br&gt;
+    Jakarta Selatan 12345
+&lt;/p&gt;
+</div>
+                    
+                    <div class="warning-box">
+                        <strong>Rule of Thumb:</strong> Gunakan &lt;p&gt; untuk separate ideas, gunakan &lt;br&gt; untuk line breaks dalam same idea.
+                    </div>
+                </div>
+
+                <h3>❓ Confusion #2: Multiple H1 Boleh Tidak?</h3>
+                <div class="demo-box">
+                    <h4>🧠 Pemikiran Pemula:</h4>
+                    <p><em>"Kalau saya punya beberapa section penting, berarti bisa pakai beberapa H1 dong?"</em></p>
+                    
+                    <h4>💡 Penjelasan:</h4>
+                    <div class="code-example">
+<span class="comment">&lt;!-- ❌ POOR SEO: Multiple H1 --&gt;</span>
+&lt;h1&gt;Welcome to Our Website&lt;/h1&gt;
+&lt;section&gt;
+    &lt;h1&gt;Our Services&lt;/h1&gt;    <span class="comment">&lt;!-- Confusing untuk SEO --&gt;</span>
+&lt;/section&gt;
+&lt;section&gt;
+    &lt;h1&gt;About Us&lt;/h1&gt;       <span class="comment">&lt;!-- Multiple H1 tidak optimal --&gt;</span>
+&lt;/section&gt;
+
+<span class="comment">&lt;!-- ✅ SEO-FRIENDLY: Single H1, proper hierarchy --&gt;</span>
+&lt;h1&gt;TechCorp - Digital Solutions for Modern Business&lt;/h1&gt;
+&lt;section&gt;
+    &lt;h2&gt;Our Services&lt;/h2&gt;
+    &lt;h3&gt;Web Development&lt;/h3&gt;
+    &lt;h3&gt;Mobile Apps&lt;/h3&gt;
+&lt;/section&gt;
+&lt;section&gt;
+    &lt;h2&gt;About Us&lt;/h2&gt;
+    &lt;h3&gt;Our History&lt;/h3&gt;
+    &lt;h3&gt;Our Team&lt;/h3&gt;
+&lt;/section&gt;
+</div>
+                    
+                    <p><strong>HTML5 technically allows multiple H1s, tapi best practice:</strong></p>
+                    <ul>
+                        <li>🎯 <strong>1 H1 per page</strong> untuk clear focus</li>
+                        <li>🔍 <strong>Better SEO</strong> dengan single primary topic</li>
+                        <li>♿ <strong>Clearer navigation</strong> untuk screen readers</li>
+                        <li>📊 <strong>Analytics advantage</strong> untuk content tracking</li>
+                    </ul>
+                </div>
+
+                <h3>❓ Confusion #3: Em vs I, Strong vs B - Bedanya Apa?</h3>
+                <div class="demo-box">
+                    <h4>🧠 Pemikiran Pemula:</h4>
+                    <p><em>"Kan sama-sama bikin italic dan bold, kenapa ada 2 tag berbeda?"</em></p>
+                    
+                    <h4>💡 Analogi Sederhana:</h4>
+                    <p><strong>Bayangkan berbicara dengan orang:</strong></p>
+                    
+                    <div class="code-example">
+<span class="comment">&lt;!-- SEMANTIC (with meaning) --&gt;</span>
+&lt;strong&gt;PENTING!&lt;/strong&gt;     <span class="comment">&lt;!-- Kamu BERTERIAK karena penting --&gt;</span>
+&lt;em&gt;harus&lt;/em&gt;              <span class="comment">&lt;!-- Kamu TEKANKAN kata ini --&gt;</span>
+
+<span class="comment">&lt;!-- VISUAL (appearance only) --&gt;</span>
+&lt;b&gt;JavaScript&lt;/b&gt;        <span class="comment">&lt;!-- Cuma mau terlihat bold --&gt;</span>
+&lt;i&gt;Inception&lt;/i&gt;         <span class="comment">&lt;!-- Cuma mau terlihat italic --&gt;</span>
+</div>
+
+                    <h4>🎯 When to Use Which:</h4>
+                    <div class="code-example">
+<span class="comment">&lt;!-- SEMANTIC: Screen readers will emphasize these --&gt;</span>
+&lt;p&gt;Kamu &lt;em&gt;harus&lt;/em&gt; backup data sebelum &lt;strong&gt;format laptop&lt;/strong&gt;!&lt;/p&gt;
+
+<span class="comment">&lt;!-- VISUAL: Just styling, no extra meaning --&gt;</span>
+&lt;p&gt;Film &lt;i&gt;The Matrix&lt;/i&gt; dibuat oleh &lt;b&gt;Wachowski Sisters&lt;/b&gt;.&lt;/p&gt;
+
+<span class="comment">&lt;!-- MIXED: Semantic where it matters --&gt;</span>
+&lt;p&gt;
+    Tutorial &lt;i&gt;React.js&lt;/i&gt; ini akan mengajarkan konsep 
+    &lt;strong&gt;fundamental yang penting&lt;/strong&gt; untuk dipahami.
+&lt;/p&gt;
+</div>
+                </div>
+
+                <h3>❓ Confusion #4: Heading untuk Styling vs Structure?</h3>
+                <div class="demo-box">
+                    <h4>🧠 Pemikiran Pemula:</h4>
+                    <p><em>"H4 keliatan perfect untuk ukuran font yang saya mau, jadi saya pakai H4 aja."</em></p>
+                    
+                    <h4>💡 Penjelasan:</h4>
+                    <div class="code-example">
+<span class="comment">&lt;!-- ❌ SALAH: Pilih heading based on appearance --&gt;</span>
+&lt;h1&gt;Main Article Title&lt;/h1&gt;
+&lt;h4&gt;Subtitle&lt;/h4&gt;              <span class="comment">&lt;!-- Skip H2, H3 karena "kegedean" --&gt;</span>
+&lt;h6&gt;Small detail&lt;/h6&gt;          <span class="comment">&lt;!-- Skip H5 karena ukuran font --&gt;</span>
+
+<span class="comment">&lt;!-- ✅ BENAR: Pilih heading based on structure --&gt;</span>
+&lt;h1&gt;Main Article Title&lt;/h1&gt;
+&lt;h2&gt;Subtitle&lt;/h2&gt;              <span class="comment">&lt;!-- Logical hierarchy --&gt;</span>
+&lt;h3&gt;Small detail&lt;/h3&gt;          <span class="comment">&lt;!-- Structure first --&gt;</span>
+
+<span class="comment">/* Use CSS to control appearance */</span>
+h2 { font-size: 1.2rem; }        /* Make it smaller */
+h3 { font-size: 0.9rem; }        /* Even smaller */
+</div>
+                    
+                    <div class="tip-box">
+                        <strong>Golden Rule:</strong> Choose HTML for structure and meaning, use CSS for appearance!
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 6: PROBLEM SOLVING & DEBUGGING -->
+            <div class="section">
+                <h2>6. 🔧 Problem Solving, Debugging & Refactoring</h2>
+                
+                <h3>🐛 Common Typography Problems</h3>
+
+                <h4>Problem #1: Text Tidak Readable di Mobile</h4>
+                <div class="demo-box">
+                    <h4>🚨 Gejala:</h4>
+                    <ul>
+                        <li>Text terlalu kecil di mobile</li>
+                        <li>Line height terlalu rapat</li>
+                        <li>Paragraf terlalu panjang</li>
+                        <li>User harus zoom untuk baca</li>
+                    </ul>
+                    
+                    <h4>🔍 Debugging Steps:</h4>
+                    <div class="code-example">
+<span class="comment">/* 1. Test di Mobile Device/DevTools */</span>
+- Buka Chrome DevTools (F12)
+- Toggle device toolbar
+- Test various screen sizes
+- Check font size readability
+
+<span class="comment">/* 2. Check Viewport Meta Tag */</span>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+<span class="comment">/* 3. Audit Text Content */</span>
+- Font size minimum 16px untuk body text
+- Line height minimum 1.5
+- Paragraph width max 75 characters
+- Sufficient color contrast
+</div>
+                    
+                    <h4>✅ Solution:</h4>
+                    <div class="code-example">
+<span class="comment">&lt;!-- HTML: Proper structure --&gt;</span>
+&lt;h1&gt;Mobile-Friendly Article Title&lt;/h1&gt;
+&lt;p&gt;
+    Short paragraphs work better on mobile devices. 
+    Keep each paragraph focused on one main idea.
+&lt;/p&gt;
+&lt;p&gt;
+    This second paragraph continues with a related point, 
+    but maintains the short, scannable format.
+&lt;/p&gt;
+
+<span class="comment">/* CSS: Mobile-first typography */</span>
+body {
+    font-size: 16px;           /* Never smaller than 16px */
+    line-height: 1.6;          /* Breathing room */
+    color: #333;               /* High contrast */
+    max-width: 70ch;           /* Optimal reading width */
+}
+
+h1 {
+    font-size: 1.75rem;        /* Mobile-appropriate size */
+    line-height: 1.2;          /* Tight for headings */
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;     /* Visual separation */
+}
+</div>
+                </div>
+
+                <h4>Problem #2: Heading Hierarchy Broken</h4>
+                <div class="demo-box">
+                    <h4>🚨 Gejala:</h4>
+                    <ul>
+                        <li>SEO ranking menurun</li>
+                        <li>Screen reader navigation rusak</li>
+                        <li>Content structure tidak jelas</li>
+                        <li>Accessibility audit failed</li>
+                    </ul>
+                    
+                    <h4>🔍 Debugging Tools:</h4>
+                    <div class="code-example">
+<span class="comment">/* 1. Outline Structure Check */</span>
+- Install "HeadingsMap" browser extension
+- Generate document outline
+- Check untuk heading gaps (H1 → H4)
+- Verify logical flow
+
+<span class="comment">/* 2. Accessibility Audit */</span>
+- Chrome Lighthouse accessibility score
+- WAVE Web Accessibility Evaluator
+- axe DevTools extension
+- Screen reader testing
+</div>
+                    
+                    <h4>✅ Refactoring Example:</h4>
+                    <div class="demo-box">
+                        <h4>❌ Before: Broken hierarchy</h4>
+                        <div class="code-example" style="background: #4a1817; color: #feb2b2;">
+&lt;h1&gt;Complete Web Development Guide&lt;/h1&gt;
+&lt;h4&gt;Frontend Technologies&lt;/h4&gt;     <span class="comment">&lt;!-- Skipped H2, H3 --&gt;</span>
+&lt;h6&gt;HTML&lt;/h6&gt;                      <span class="comment">&lt;!-- Skipped H5 --&gt;</span>
+&lt;h6&gt;CSS&lt;/h6&gt;
+&lt;h2&gt;Backend Technologies&lt;/h2&gt;      <span class="comment">&lt;!-- Inconsistent --&gt;</span>
+&lt;h4&gt;Node.js&lt;/h4&gt;                  <span class="comment">&lt;!-- Should be H3 --&gt;</span>
+</div>
+                        
+                        <h4>✅ After: Proper hierarchy</h4>
+                        <div class="code-example">
+&lt;h1&gt;Complete Web Development Guide&lt;/h1&gt;
+  &lt;h2&gt;Frontend Technologies&lt;/h2&gt;
+    &lt;h3&gt;HTML - Structure and Semantics&lt;/h3&gt;
+      &lt;h4&gt;Basic HTML Elements&lt;/h4&gt;
+      &lt;h4&gt;Semantic HTML5&lt;/h4&gt;
+    &lt;h3&gt;CSS - Styling and Layout&lt;/h3&gt;
+      &lt;h4&gt;CSS Fundamentals&lt;/h4&gt;
+      &lt;h4&gt;Responsive Design&lt;/h4&gt;
+  &lt;h2&gt;Backend Technologies&lt;/h2&gt;
+    &lt;h3&gt;Node.js - JavaScript Runtime&lt;/h3&gt;
+      &lt;h4&gt;Express.js Framework&lt;/h4&gt;
+      &lt;h4&gt;Database Integration&lt;/h4&gt;
+</div>
+                    </div>
+                </div>
+
+                <h3>🛠️ Content Refactoring Techniques</h3>
+
+                <h4>Refactoring #1: Wall of Text → Scannable Content</h4>
+                <div class="demo-box">
+                    <h4>❌ Before: Intimidating wall of text</h4>
+                    <div class="code-example" style="background: #4a1817; color: #feb2b2;">
+&lt;p&gt;
+    JavaScript adalah bahasa pemrograman yang sangat powerful dan flexible 
+    yang digunakan untuk web development baik frontend maupun backend dan 
+    JavaScript juga bisa digunakan untuk mobile development dengan React 
+    Native dan desktop development dengan Electron dan JavaScript memiliki 
+    ecosystem yang sangat besar dengan jutaan packages di npm repository 
+    dan JavaScript terus berkembang dengan fitur-fitur baru setiap tahun 
+    melalui ECMAScript specification updates yang membuat JavaScript 
+    semakin modern dan easier to use untuk developers di seluruh dunia.
+&lt;/p&gt;
+</div>
+                    
+                    <h4>✅ After: Scannable, structured content</h4>
+                    <div class="code-example">
+&lt;h2&gt;JavaScript: The Versatile Programming Language&lt;/h2&gt;
+
+&lt;p&gt;
+    &lt;strong&gt;JavaScript&lt;/strong&gt; adalah bahasa pemrograman yang powerful 
+    dan flexible untuk modern web development.
+&lt;/p&gt;
+
+&lt;h3&gt;Platform Versatility&lt;/h3&gt;
+&lt;p&gt;JavaScript tidak hanya untuk web browser:&lt;/p&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Frontend:&lt;/strong&gt; Interactive web applications&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Backend:&lt;/strong&gt; Server-side dengan Node.js&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Mobile:&lt;/strong&gt; Cross-platform apps dengan React Native&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Desktop:&lt;/strong&gt; Native apps dengan Electron&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Rich Ecosystem&lt;/h3&gt;
+&lt;p&gt;
+    Dengan &lt;em&gt;jutaan packages&lt;/em&gt; di npm repository, JavaScript 
+    memiliki solution untuk hampir setiap development challenge.
+&lt;/p&gt;
+
+&lt;h3&gt;Continuous Evolution&lt;/h3&gt;
+&lt;p&gt;
+    ECMAScript updates tahunan memastikan JavaScript tetap 
+    &lt;strong&gt;modern dan developer-friendly&lt;/strong&gt;.
+&lt;/p&gt;
+</div>
+                </div>
+
+                <h4>Refactoring #2: Generic → Descriptive Headings</h4>
+                <div class="demo-box">
+                    <h4>❌ Before: Generic headings</h4>
+                    <div class="code-example" style="background: #4a1817; color: #feb2b2;">
+&lt;h1&gt;Tutorial&lt;/h1&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;h2&gt;Getting Started&lt;/h2&gt;
+&lt;h2&gt;Advanced&lt;/h2&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+</div>
+                    
+                    <h4>✅ After: Descriptive, keyword-rich headings</h4>
+                    <div class="code-example">
+&lt;h1&gt;React.js Complete Tutorial: Build Modern Web Apps in 2025&lt;/h1&gt;
+&lt;h2&gt;Why React.js is Essential for Modern Web Development&lt;/h2&gt;
+&lt;h2&gt;Setting Up Your React Development Environment&lt;/h2&gt;
+&lt;h2&gt;Advanced React Patterns: Context, Hooks, and Performance&lt;/h2&gt;
+&lt;h2&gt;Next Steps: Deploying Your React App to Production&lt;/h2&gt;
+</div>
+                </div>
+
+                <h3>🔧 Professional Content Quality Workflow</h3>
+                <ol>
+                    <li><strong>Content Audit</strong>
+                        <ul>
+                            <li>Check heading hierarchy dengan HeadingsMap</li>
+                            <li>Verify paragraph length (50-75 words)</li>
+                            <li>Ensure proper semantic markup</li>
+                            <li>Test mobile readability</li>
+                        </ul>
+                    </li>
+                    
+                    <li><strong>Accessibility Review</strong>
+                        <ul>
+                            <li>Screen reader navigation test</li>
+                            <li>Color contrast verification (WCAG AA)</li>
+                            <li>Keyboard navigation check</li>
+                            <li>Alternative text audit</li>
+                        </ul>
+                    </li>
+                    
+                    <li><strong>Performance Check</strong>
+                        <ul>
+                            <li>Minimize excessive formatting tags</li>
+                            <li>Optimize font loading strategy</li>
+                            <li>Check content layout shift (CLS)</li>
+                            <li>Validate HTML structure</li>
+                        </ul>
+                    </li>
+                    
+                    <li><strong>SEO Optimization</strong>
+                        <ul>
+                            <li>H1 contains primary keyword</li>
+                            <li>Headings follow logical hierarchy</li>
+                            <li>Content matches user intent</li>
+                            <li>Meta descriptions optimized</li>
+                        </ul>
+                    </li>
+                    
+                    <li><strong>Quality Assurance</strong>
+                        <ul>
+                            <li>Cross-browser typography testing</li>
+                            <li>Multiple device size validation</li>
+                            <li>Content proofreading dan grammar check</li>
+                            <li>Final HTML validation</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>Pro Workflow:</strong> Gunakan tools seperti Grammarly untuk content quality, HeadingsMap untuk structure audit, dan Lighthouse untuk overall performance check!
+                </div>
+            </div>
+
+            <div class="section" style="text-align: center; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); color: white;">
+                <h2>🎯 Ready untuk Final Project Day 2?</h2>
+                <p>Saatnya mengaplikasikan semua knowledge tentang headings, paragraphs, dan text formatting!</p>
+                <p><strong>Final Project:</strong> Professional Blog Article Page</p>
+                <p><em>Complete dengan proper typography, semantic structure, dan mobile-friendly design!</em></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

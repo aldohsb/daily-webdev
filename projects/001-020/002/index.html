@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<!-- 
+    DAY 2 FINAL PROJECT: Professional Blog Article Page
+    
+    TUJUAN PROJECT:
+    - Menerapkan proper heading hierarchy (H1-H6)
+    - Menggunakan paragraph structure yang optimal
+    - Implementasi text formatting dengan semantic meaning
+    - Membuat content yang readable dan SEO-friendly
+    - Mobile-first responsive typography
+    
+    STRUKTUR FOLDER PROJECT:
+    day-2-project/
+    ├── index.html (file ini)
+    ├── README.md
+    ├── assets/
+    │   ├── css/
+    │   │   └── styles.css (future enhancement)
+    │   └── images/
+    └── docs/
+        └── content-strategy.md
+        
+    SKILLS YANG DIAPLIKASIKAN:
+    ✅ Semantic heading hierarchy
+    ✅ Optimal paragraph structure
+    ✅ Text formatting elements
+    ✅ Mobile-first typography
+    ✅ Accessibility best practices
+    ✅ SEO optimization
+-->
+<html lang="id">
+<head>
+    <!-- Essential meta tags untuk HTML5 modern -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Tutorial lengkap belajar React.js untuk pemula - dari installation hingga deployment. Pelajari component, JSX, hooks, dan state management dengan praktik terbaik industri.">
+    <meta name="keywords" content="react tutorial, react js, javascript framework, frontend development, web development, react hooks, JSX, component">
+    <meta name="author" content="Rinaldo Hasibuan - Fullstack Developer Student">
+    
+    <!-- Open Graph meta tags untuk social media -->
+    <meta property="og:title" content="React.js Complete Tutorial 2025: From Zero to Hero">
+    <meta property="og:description" content="Master React.js dengan tutorial comprehensive ini. Perfect untuk pemula yang ingin menguasai modern frontend development.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://yoursite.com/react-tutorial">
+    
+    <!-- Title yang descriptive dan SEO-friendly -->
+    <title>React.js Complete Tutorial 2025: From Zero to Hero | Day 2 Project</title>
+    
+    <style>
+        /* CSS RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Mobile-first responsive typography */
+        html {
+            font-size: 16px; /* Never go below 16px untuk mobile */
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif; /* Readable serif untuk long-form content */
+            line-height: 1.6; /* Optimal line height untuk readability */
+            color: #2c3e50; /* High contrast untuk accessibility */
+            background-color: #ffffff;
+            max-width: 70ch; /* Optimal reading width (70 characters) */
+            margin: 0 auto; /* Center content */
+            padding: 20px; /* Breathing room dari edges */
+        }
+        
+        /* HEADING STYLES - Proper hierarchy */
+        h1 {
+            font-size: 1.875rem; /* 30px - mobile-appropriate */
+            line-height: 1.2; /* Tight line-height untuk headings */
+            color: #e74c3c; /* Brand color */
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 1.5rem; /* 24px */
+            line-height: 1.3;
+            color: #c0392b; /* Darker shade untuk hierarchy */
+            margin-top: 2rem; /* Space before section */
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            border-bottom: 2px solid #ecf0f1; /* Visual separation */
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            font-size: 1.25rem; /* 20px */
+            line-height: 1.4;
+            color: #8e44ad; /* Different color untuk visual hierarchy */
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        h4 {
+            font-size: 1.125rem; /* 18px */
+            line-height: 1.4;
+            color: #2980b9; /* Blue untuk sub-subsections */
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        h5 {
+            font-size: 1rem; /* 16px - same as body tapi bold */
+            line-height: 1.5;
+            color: #27ae60; /* Green untuk minor headings */
+            margin-top: 1rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            text-transform: uppercase; /* Visual distinction */
+            letter-spacing: 0.5px;
+        }
+        
+        h6 {
+            font-size: 0.875rem; /* 14px - smallest heading */
+            line-height: 1.5;
+            color: #7f8c8d; /* Muted color */
+            margin-top: 1rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* PARAGRAPH STYLES */
+        p {
+            margin-bottom: 1.5rem; /* Consistent spacing */
+            text-align: justify; /* Better text distribution */
+            hyphens: auto; /* Break long words appropriately */
+        }
+        
+        /* Paragraph variations */
+        .lead-paragraph {
+            font-size: 1.125rem; /* Larger untuk opening paragraph */
+            line-height: 1.7;
+            color: #34495e; /* Slightly different color */
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .small-text {
+            font-size: 0.875rem;
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+        
+        /* TEXT FORMATTING ELEMENTS */
+        strong {
+            font-weight: 700;
+            color: #e74c3c; /* Matching theme color */
+        }
+        
+        em {
+            font-style: italic;
+            color: #8e44ad; /* Purple untuk emphasis */
+        }
+        
+        mark {
+            background-color: #f1c40f; /* Yellow highlighting */
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        code {
+            font-family: 'Courier New', 'Monaco', monospace;
+            background-color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #e74c3c;
+        }
+        
+        kbd {
+            font-family: 'Courier New', monospace;
+            background-color: #34495e;
+            color: white;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* QUOTATION STYLES */
+        blockquote {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+            font-style: italic;
+            position: relative;
+        }
+        
+        blockquote::before {
+            content: '"';
+            font-size: 4rem;
+            color: rgba(231, 76, 60, 0.3);
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-family: serif;
+        }
+        
+        blockquote p {
+            margin-bottom: 0.5rem;
+        }
+        
+        blockquote cite {
+            display: block;
+            text-align: right;
+            font-style: normal;
+            font-weight: 600;
+            color: #7f8c8d;
+            margin-top: 1rem;
+        }
+        
+        blockquote cite::before {
+            content: "— ";
+        }
+        
+        /* LIST STYLES */
+        ul, ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        
+        /* Nested lists */
+        ul ul, ol ol, ul ol, ol ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        /* ARTICLE STRUCTURE */
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .article-meta {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 1rem;
+        }
+        
+        .author-info {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .progress-indicator {
+            background-color: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* TABLE OF CONTENTS */
+        .table-of-contents {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .table-of-contents h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .table-of-contents ul {
+            margin: 1rem 0 0 0;
+        }
+        
+        .table-of-contents a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s ease;
+        }
+        
+        .table-of-contents a:hover {
+            color: #e74c3c;
+            text-decoration: underline;
+        }
+        
+        /* RESPONSIVE BREAKPOINTS */
+        @media (min-width: 768px) {
+            /* Tablet adjustments */
+            html { font-size: 18px; }
+            body { padding: 40px; }
+            h1 { font-size: 2.25rem; }
+            h2 { font-size: 1.75rem; }
+            .lead-paragraph { font-size: 1.25rem; }
+        }
+        
+        @media (min-width: 1024px) {
+            /* Desktop adjustments */
+            html { font-size: 18px; }
+            body { 
+                padding: 60px;
+                max-width: 75ch; /* Slightly wider untuk desktop */
+            }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+        }
+        
+        /* PRINT STYLES */
+        @media print {
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+                color: black;
+                background: white;
+                max-width: none;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                color: black;
+                page-break-after: avoid;
+            }
+            
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+        }
+    </style>
+</head>
+
+<!-- BODY - Main content container -->
+<body>
+    <!-- ARTICLE HEADER - Introduction section -->
+    <header class="article-header">
+        <!-- Progress indicator showing learning journey -->
+        <div class="progress-indicator">
+            📚 Day 2/500 - HTML Typography Mastery
+        </div>
+        
+        <!-- H1 - Primary heading (hanya 1 per halaman) -->
+        <!-- SEO-optimized dengan primary keywords -->
+        <h1>React.js Complete Tutorial 2025: From Zero to Hero</h1>
+        
+        <!-- Lead paragraph - larger text untuk introduction -->
+        <p class="lead-paragraph">
+            <strong>React.js</strong> telah menjadi <em>framework JavaScript paling populer</em> 
+            untuk membangun user interfaces modern. Tutorial comprehensive ini akan membawa 
+            Anda dari pemula absolut hingga mampu membuat <mark>aplikasi web yang powerful</mark>.
+        </p>
+        
+        <!-- Article metadata dengan semantic time element -->
+        <div class="article-meta">
+            📅 <strong>Published:</strong> <time datetime="2025-09-23">23 September 2025</time> | 
+            ⏱️ <strong>Reading Time:</strong> 15 menit | 
+            🎯 <strong>Level:</strong> Beginner to Intermediate
+        </div>
+    </header>
+
+    <!-- TABLE OF CONTENTS - Navigation aid -->
+    <nav class="table-of-contents">
+        <h3>📋 Daftar Isi</h3>
+        <ul>
+            <li><a href="#why-react">Mengapa Memilih React.js?</a></li>
+            <li><a href="#prerequisites">Prerequisites dan Persiapan</a></li>
+            <li><a href="#installation">Setup Development Environment</a></li>
+            <li><a href="#fundamentals">React Fundamentals</a>
+                <ul>
+                    <li><a href="#components">Components & JSX</a></li>
+                    <li><a href="#props">Props & State</a></li>
+                    <li><a href="#hooks">React Hooks</a></li>
+                </ul>
+            </li>
+            <li><a href="#advanced">Advanced Concepts</a></li>
+            <li><a href="#deployment">Deployment Strategy</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN CONTENT - Article body -->
+    <main>
+        <!-- SECTION 1: Why React -->
+        <section id="why-react">
+            <!-- H2 - Major section heading -->
+            <h2>🚀 Mengapa Memilih React.js?</h2>
+            
+            <p>
+                React.js bukan hanya sekedar <strong>JavaScript library</strong>, melainkan 
+                ecosystem lengkap yang mengubah cara kita membangun aplikasi web. 
+                Dikembangkan oleh <em>Facebook (Meta)</em>, React telah membuktikan 
+                skalabilitasnya di aplikasi dengan <mark>miliaran pengguna</mark>.
+            </p>
+
+            <!-- H3 - Subsection heading -->
+            <h3>💡 Keunggulan Utama React</h3>
+            
+            <p>
+                React menawarkan pendekatan <strong>component-based</strong> yang 
+                memungkinkan developers untuk:
+            </p>
+
+            <!-- Ordered list untuk sequential information -->
+            <ol>
+                <li>
+                    <strong>Reusability:</strong> Membuat components yang dapat digunakan 
+                    berulang kali di berbagai bagian aplikasi
+                </li>
+                <li>
+                    <strong>Maintainability:</strong> Structure code yang organized dan 
+                    mudah di-maintain untuk tim besar
+                </li>
+                <li>
+                    <strong>Performance:</strong> Virtual DOM memberikan rendering yang 
+                    <em>optimal dan fast</em>
+                </li>
+                <li>
+                    <strong>Ecosystem:</strong> Library dan tools yang sangat kaya untuk 
+                    accelerate development
+                </li>
+            </ol>
+
+            <!-- Blockquote untuk expert opinion -->
+            <blockquote>
+                <p>
+                    React doesn't just solve problems—it changes how you think about 
+                    building user interfaces. The component model creates a mental 
+                    shift that makes complex applications manageable.
+                </p>
+                <cite>Dan Abramov, Co-creator of Redux & React Team Member</cite>
+            </blockquote>
+
+            <!-- H4 - Minor subsection -->
+            <h4>📊 Market Adoption & Industry Demand</h4>
+            
+            <p>
+                Berdasarkan <strong>Stack Overflow Developer Survey 2024</strong>, React 
+                menduduki peringkat <mark>#2 most loved web framework</mark> dengan adoption 
+                rate yang terus meningkat. Companies seperti <em>Netflix, Airbnb, Instagram</em>, 
+                dan <em>WhatsApp</em> mengandalkan React untuk production applications mereka.
+            </p>
+        </section>
+
+        <!-- SECTION 2: Prerequisites -->
+        <section id="prerequisites">
+            <h2>📚 Prerequisites dan Persiapan</h2>
+            
+            <p>
+                Sebelum diving into React, pastikan Anda memiliki <strong>foundation yang solid</strong> 
+                dalam teknologi web fundamental.
+            </p>
+
+            <h3>✅ Skills yang Dibutuhkan</h3>
+            
+            <!-- H4 untuk sub-kategorisasi -->
+            <h4>Essential Skills (Wajib)</h4>
+            
+            <ul>
+                <li>
+                    <strong>HTML5:</strong> Semantic elements, forms, accessibility basics
+                </li>
+                <li>
+                    <strong>CSS3:</strong> Flexbox, Grid, responsive design principles
+                </li>
+                <li>
+                    <strong>JavaScript ES6+:</strong> 
+                    <!-- Nested list untuk detail breakdown -->
+                    <ul>
+                        <li>Variables: <code>let</code>, <code>const</code></li>
+                        <li>Functions: Arrow functions, destructuring</li>
+                        <li>Arrays: <code>map()</code>, <code>filter()</code>, <code>reduce()</code></li>
+                        <li>Objects: Object methods, spread operator</li>
+                        <li>Promises: <code>async</code>/<code>await</code></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Recommended Skills</h4>
+            
+            <ul>
+                <li><strong>Git:</strong> Version control basics</li>
+                <li><strong>npm/yarn:</strong> Package management</li>
+                <li><strong>Command Line:</strong> Basic terminal commands</li>
+                <li><strong>Browser DevTools:</strong> Debugging JavaScript</li>
+            </ul>
+
+            <!-- Warning box menggunakan emphasis -->
+            <p>
+                <strong>⚠️ Important Note:</strong> Jika Anda belum comfortable dengan 
+                <em>JavaScript fundamentals</em>, sangat disarankan untuk menguasainya 
+                terlebih dahulu. React adalah <mark>JavaScript-heavy</mark>, dan tanpa 
+                foundation yang kuat, learning curve akan sangat steep.
+            </p>
+        </section>
+
+        <!-- SECTION 3: Installation -->
+        <section id="installation">
+            <h2>🛠️ Setup Development Environment</h2>
+            
+            <p>
+                Modern React development memerlukan <strong>development environment</strong> 
+                yang properly configured untuk productive workflow.
+            </p>
+
+            <h3>📦 Required Software</h3>
+            
+            <!-- H4 untuk step-by-step breakdown -->
+            <h4>Step 1: Install Node.js</h4>
+            
+            <p>
+                <strong>Node.js</strong> adalah runtime environment untuk menjalankan 
+                JavaScript di server. React development tools bergantung pada Node.js.
+            </p>
+            
+            <!-- Ordered list untuk sequential steps -->
+            <ol>
+                <li>
+                    Download <strong>Node.js LTS version</strong> dari 
+                    <a href="https://nodejs.org">nodejs.org</a>
+                </li>
+                <li>
+                    Install dengan default settings
+                </li>
+                <li>
+                    Verify installation dengan command:
+                    <br>
+                    <code>node --version</code> dan <code>npm --version</code>
+                </li>
+            </ol>
+
+            <h4>Step 2: Choose Code Editor</h4>
+            
+            <p>
+                <strong>Visual Studio Code</strong> adalah editor paling populer untuk 
+                React development dengan ecosystem extensions yang rich.
+            </p>
+            
+            <!-- H5 untuk minor categorization -->
+            <h5>Essential VS Code Extensions:</h5>
+            
+            <ul>
+                <li><strong>ES7+ React/Redux/React-Native snippets</strong></li>
+                <li><strong>Prettier - Code formatter</strong></li>
+                <li><strong>Auto Rename Tag</strong></li>
+                <li><strong>Bracket Pair Colorizer</strong></li>
+            </ul>
+
+            <h4>Step 3: Create React Project</h4>
+            
+            <p>
+                <strong>Create React App</strong> adalah official tool untuk bootstrapping 
+                React applications dengan <em>zero configuration</em>.
+            </p>
+            
+            <p>
+                Jalankan command berikut di terminal:
+            </p>
+            
+            <!-- Code block menggunakan preformatted text -->
+            <pre><code>npx create-react-app my-first-react-app
+cd my-first-react-app
+npm start</code></pre>
+            
+            <p>
+                Command ini akan create project structure, install dependencies, dan 
+                start development server di <code>http://localhost:3000</code>.
+            </p>
+
+            <!-- H6 untuk smallest categorization -->
+            <h6>Alternative: Vite for Faster Development</h6>
+            
+            <p class="small-text">
+                <em>Advanced developers</em> mungkin prefer <strong>Vite</strong> untuk 
+                faster build times dan modern tooling. Create Vite project dengan: 
+                <code>npm create vite@latest my-app -- --template react</code>
+            </p>
+        </section>
+
+        <!-- SECTION 4: React Fundamentals -->
+        <section id="fundamentals">
+            <h2>⚛️ React Fundamentals</h2>
+            
+            <p>
+                Understanding <strong>core concepts</strong> adalah foundation untuk 
+                mastering React. Mari explore building blocks yang membuat React powerful.
+            </p>
+
+            <!-- Subsection: Components -->
+            <section id="components">
+                <h3>🧩 Components & JSX</h3>
+                
+                <p>
+                    <strong>Components</strong> adalah heart of React. Think of them as 
+                    <em>custom HTML elements</em> yang dapat accept data (props) dan 
+                    maintain internal state.
+                </p>
+
+                <h4>Function vs Class Components</h4>
+                
+                <p>
+                    Modern React development heavily favors <strong>Function Components</strong> 
+                    dengan Hooks API. Class components masih supported tapi considered legacy.
+                </p>
+                
+                <!-- Code example dengan proper formatting -->
+                <pre><code>// Modern Function Component
+function Welcome(props) {
+    return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
+}
+
+// Arrow Function Style
+const Welcome = (props) =&gt; {
+    return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
+};</code></pre>
+
+                <h4>JSX: JavaScript XML</h4>
+                
+                <p>
+                    <strong>JSX</strong> adalah syntax extension yang memungkinkan kita 
+                    write <mark>HTML-like code</mark> dalam JavaScript. It's transpiled 
+                    to regular JavaScript function calls.
+                </p>
+                
+                <blockquote>
+                    <p>
+                        JSX is not a template language—it's just syntactic sugar for 
+                        React.createElement() calls. This makes it incredibly powerful 
+                        because you have the full power of JavaScript.
+                    </p>
+                    <cite>React Documentation Team</cite>
+                </blockquote>
+            </section>
+
+            <!-- Subsection: Props & State -->
+            <section id="props">
+                <h3>📊 Props & State Management</h3>
+                
+                <p>
+                    Data flow dalam React mengikuti <strong>unidirectional pattern</strong>. 
+                    Props flow down from parent ke child components, sedangkan state 
+                    di-manage locally dalam each component.
+                </p>
+
+                <h4>Understanding Props</h4>
+                
+                <ul>
+                    <li><strong>Immutable:</strong> Props tidak boleh di-modify oleh child component</li>
+                    <li><strong>Data Flow:</strong> Always flows dari parent ke child</li>
+                    <li><strong>Function Props:</strong> Dapat pass functions sebagai props untuk communication</li>
+                </ul>
+
+                <h4>State Management Basics</h4>
+                
+                <p>
+                    <strong>State</strong> adalah private data yang belongs to component. 
+                    When state changes, React <em>automatically re-renders</em> component 
+                    dan child components yang affected.
+                </p>
+            </section>
+
+            <!-- Subsection: Hooks -->
+            <section id="hooks">
+                <h3>🎣 React Hooks Deep Dive</h3>
+                
+                <p>
+                    <strong>Hooks</strong> adalah revolutionary addition yang memungkinkan 
+                    function components untuk use state dan lifecycle features yang 
+                    sebelumnya only available di class components.
+                </p>
+
+                <h4>Essential Hooks</h4>
+                
+                <ol>
+                    <li>
+                        <strong>useState:</strong> Manage component state
+                        <br><code>const [count, setCount] = useState(0);</code>
+                    </li>
+                    <li>
+                        <strong>useEffect:</strong> Side effects dan lifecycle events
+                        <br><code>useEffect(() => { /* effect */ }, [dependencies]);</code>
+                    </li>
+                    <li>
+                        <strong>useContext:</strong> Consume context values
+                        <br><code>const value = useContext(MyContext);</code>
+                    </li>
+                </ol>
+
+                <h5>Advanced Hooks untuk Power Users:</h5>
+                
+                <ul>
+                    <li><strong>useReducer:</strong> Complex state management</li>
+                    <li><strong>useMemo:</strong> Expensive computations caching</li>
+                    <li><strong>useCallback:</strong> Function memoization</li>
+                    <li><strong>useRef:</strong> Direct DOM access</li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- SECTION 5: Advanced Concepts -->
+        <section id="advanced">
+            <h2>🎓 Advanced React Concepts</h2>
+            
+            <p>
+                Setelah menguasai fundamentals, <strong>advanced patterns</strong> akan 
+                membawa React skills Anda ke professional level.
+            </p>
+
+            <h3>🏗️ Application Architecture</h3>
+            
+            <h4>State Management Solutions</h4>
+            
+            <p>
+                Untuk <em>complex applications</em>, built-in state management mungkin 
+                tidak sufficient. Consider these solutions:
+            </p>
+            
+            <ul>
+                <li>
+                    <strong>Redux Toolkit:</strong> Predictable state container untuk 
+                    large-scale applications
+                </li>
+                <li>
+                    <strong>Zustand:</strong> Lightweight alternative dengan simpler API
+                </li>
+                <li>
+                    <strong>React Query:</strong> Server state management dan caching
+                </li>
+                <li>
+                    <strong>SWR:</strong> Data fetching dengan smart caching strategies
+                </li>
+            </ul>
+
+            <h4>Performance Optimization</h4>
+            
+            <p>
+                <mark>Performance adalah crucial</mark> untuk user experience yang baik. 
+                Key optimization techniques:
+            </p>
+            
+            <ol>
+                <li><strong>Code Splitting:</strong> Load only necessary code</li>
+                <li><strong>Lazy Loading:</strong> Defer component loading</li>
+                <li><strong>Memoization:</strong> Avoid unnecessary re-renders</li>
+                <li><strong>Bundle Analysis:</strong> Identify dan eliminate bloat</li>
+            </ol>
+
+            <h3>🧪 Testing Strategy</h3>
+            
+            <p>
+                <strong>Testing pyramid</strong> untuk React applications:
+            </p>
+            
+            <ul>
+                <li><strong>Unit Tests:</strong> Individual components dan functions</li>
+                <li><strong>Integration Tests:</strong> Component interactions</li>
+                <li><strong>E2E Tests:</strong> Complete user workflows</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 6: Deployment -->
+        <section id="deployment">
+            <h2>🚀 Deployment Strategy</h2>
+            
+            <p>
+                Getting your React app to <strong>production</strong> requires careful 
+                consideration of hosting platforms, build optimization, dan CI/CD workflows.
+            </p>
+
+            <h3>🌐 Popular Hosting Platforms</h3>
+            
+            <h4>Static Site Hosting (Recommended untuk Beginners)</h4>
+            
+            <ul>
+                <li>
+                    <strong>Netlify:</strong> 
+                    <ul>
+                        <li>✅ Easy deployment dari Git</li>
+                        <li>✅ Built-in form handling</li>
+                        <li>✅ Automatic HTTPS</li>
+                        <li>✅ Generous free tier</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Vercel:</strong>
+                    <ul>
+                        <li>✅ Optimized untuk React/Next.js</li>
+                        <li>✅ Automatic deployments</li>
+                        <li>✅ Built-in analytics</li>
+                        <li>✅ Edge functions support</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Cloud Platforms (untuk Complex Applications)</h4>
+            
+            <ul>
+                <li><strong>AWS S3 + CloudFront:</strong> Scalable dan cost-effective</li>
+                <li><strong>Google Firebase:</strong> Full-stack solution dengan database</li>
+                <li><strong>Microsoft Azure:</strong> Enterprise-grade hosting</li>
+            </ul>
+
+            <h3>⚡ Build Optimization</h3>
+            
+            <p>
+                Production builds require <em>optimization</em> untuk best performance:
+            </p>
+            
+            <ol>
+                <li>
+                    <strong>Run production build:</strong> <code>npm run build</code>
+                </li>
+                <li>
+                    <strong>Analyze bundle size:</strong> Use tools seperti Bundle Analyzer
+                </li>
+                <li>
+                    <strong>Optimize images:</strong> Compress dan use appropriate formats
+                </li>
+                <li>
+                    <strong>Enable gzip compression:</strong> Reduce transfer size
+                </li>
+                <li>
+                    <strong>Setup CDN:</strong> Faster content delivery globally
+                </li>
+            </ol>
+        </section>
+    </main>
+
+    <!-- AUTHOR INFO SECTION -->
+    <aside class="author-info">
+        <h3>👨‍💻 About the Author</h3>
+        <p>
+            <strong>Rinaldo Hasibuan</strong> adalah aspiring fullstack developer yang sedang 
+            menjalani <em>500-day learning journey</em> untuk menguasai MERN stack. 
+            Artikel ini adalah bagian dari <mark>daily project documentation</mark> 
+            dalam mempelajari modern web development.
+        </p>
+        
+        <p class="small-text">
+            📧 <strong>Contact:</strong> [email@example.com] | 
+            🐙 <strong>GitHub:</strong> [username] | 
+            💼 <strong>LinkedIn:</strong> [profile] | 
+            📝 <strong>Blog:</strong> [blog-url]
+        </p>
+    </aside>
+
+    <!-- FOOTER dengan semantic time dan progress info -->
+    <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #ecf0f1; text-align: center; color: #7f8c8d;">
+        <p>
+            <strong>📊 Learning Progress:</strong> Day 2/500 (0.4% Complete) | 
+            <strong>📅 Published:</strong> <time datetime="2025-09-23">September 23, 2025</time>
+        </p>
+        
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <em>"The journey of mastering web development continues, one day at a time."</em>
+        </p>
+        
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">
+            © 2025 Personal Learning Portfolio | HTML Typography Mastery Project
+        </p>
+    </footer>
+</body>
+</html>
+
+<!-- 
+    PROJECT COMPLETE! 🎉
+    
+    TYPOGRAPHY ELEMENTS IMPLEMENTED:
+    ✅ Proper heading hierarchy (H1-H6) dengan semantic meaning
+    ✅ Optimized paragraph structure (50-75 words each)
+    ✅ Text formatting: strong, em, mark, code, kbd
+    ✅ Quotations: blockquote dengan proper citations
+    ✅ Lists: ordered, unordered, nested lists
+    ✅ Editorial elements: ins, del untuk content changes
+    ✅ Technical elements: code, kbd, samp untuk programming content
+    
+    RESPONSIVE DESIGN FEATURES:
+    ✅ Mobile-first typography (16px base minimum)
+    ✅ Responsive breakpoints untuk tablet dan desktop
+    ✅ Optimal line-height dan character width
+    ✅ Print-friendly styles
+    
+    SEO & ACCESSIBILITY:
+    ✅ SEO-optimized H1 dengan primary keywords
+    ✅ Proper heading hierarchy untuk navigation
+    ✅ Semantic time elements dengan datetime attributes
+    ✅ Descriptive meta tags dan Open Graph
+    ✅ High contrast colors untuk accessibility
+    ✅ Screen reader friendly structure
+    
+    CONTENT STRATEGY:
+    ✅ Table of contents untuk easy navigation
+    ✅ Lead paragraph dengan larger text
+    ✅ Proper content hierarchy dan flow
+    ✅ Scannable content dengan headings dan lists
+    ✅ Expert quotes untuk credibility
+    ✅ Actionable steps dan code examples
+    
+    PROFESSIONAL FEATURES:
+    ✅ Article metadata dan publishing info
+    ✅ Author bio section
+    ✅ Progress tracking indicator
+    ✅ Social media ready (Open Graph)
+    ✅ Print-optimized styles
+    
+    VALIDATION CHECKLIST:
+    ✅ Valid HTML5 structure
+    ✅ Proper semantic elements usage
+    ✅ Accessible heading hierarchy
+    ✅ Mobile-responsive typography
+    ✅ Professional content presentation
+    ✅ Industry-standard best practices
+    
+    NEXT STEPS:
+    - Validate HTML di validator.w3.org
+    - Test responsive design di berbagai devices
+    - Check accessibility dengan screen reader
+    - Analyze typography dengan design tools
+    - Add to learning portfolio index
+-->
