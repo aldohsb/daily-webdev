@@ -21,30 +21,33 @@ HTML Fundamentals
    - sertakan code mkdir dan touch struktur folder proyek untuk bikin file kosong.
 
 
-**KURIKULUM OVERVIEW:**
-- 500 hari pembelajaran fullstack developer
-- Stack: HTML, CSS, JavaScript, React, Node.js, MongoDB
-## **FASE 1: FOUNDATION & WEB BASICS (Hari 1-50)**
+package.json
+  "homepage": "https://aldohsb.github.io/daily-webdev/projects/001-020/",
+  "scripts": {
+	  "predeploy": "npm run build",
+	  "deploy": "gh-pages -d dist -r https://github.com/aldohsb/daily-webdev.git -b gh-pages --dest projects/001-020",
 
-### **HTML Fundamentals (Hari 1-10)**
-1. Pengenalan HTML dan struktur dasar dokumen
-2. Tag HTML dasar: headings, paragraf, dan formatting
-3. Lists, links, dan navigation dasar
-4. Images, audio, dan media elements
-5. HTML Forms: input types dan validasi dasar
-6. Tables dan data presentation
-7. HTML5 semantic elements
-8. HTML accessibility basics
-9. Meta tags dan SEO fundamentals
-10. Project: Membuat portfolio website sederhana dengan HTML murni
-... 
+vite.config.js
+  base: '/daily-webdev/projects/001-020/',
 
 
-**NEXT PEMBELAJARAN:**
-Sekarang masuk di hari ke-3
-Buatkan materi untuk hari ke-3 ini beserta 1 final projectnya
+npm run deploy
 
-Lanjutkan dengan format yang sama: materi pembelajaran detail + final project dengan komentar lengkap. Pastikan code examples readable dengan <br> dan &nbsp;, dan gunakan &lt; &gt; entities dalam code blocks.
+git add index.html
+git commit -m "Update homepage with new project links"
+git push origin main
+# Pindah ke cabang gh-pages
+git checkout gh-pages
+
+# Gabungkan perubahan dari main
+git pull origin main
+
+# Push perubahan ke gh-pages
+git push origin gh-pages --force
+
+
+
+
 
 # Kurikulum Fullstack Developer MERN - 500 Hari
 
